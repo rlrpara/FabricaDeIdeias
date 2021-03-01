@@ -1,4 +1,5 @@
 ﻿using FabricaDeIdeias.Dominio.ObjetoValor;
+using System;
 
 namespace FabricaDeIdeias.Dominio.Entidades
 {
@@ -13,9 +14,12 @@ namespace FabricaDeIdeias.Dominio.Entidades
             Email email
         )
         {
+            if (string.IsNullOrWhiteSpace(senha))
+                throw new ArgumentException("Senha é obrigatória");
+
             Id = id;
             Nome = nome;
-            Senha = senha;
+            Senha = Criptografia.Codifica(senha);
             _email = email;
         }
         public int? Id { get; private set; }
