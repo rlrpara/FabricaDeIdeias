@@ -1,4 +1,5 @@
 ﻿using FabricaDeIdeias.Dominio.Enum;
+using FabricaDeIdeias.Dominio.ExtensionMethods;
 
 namespace FabricaDeIdeias.Dominio.ObjetoValor
 {
@@ -10,7 +11,7 @@ namespace FabricaDeIdeias.Dominio.ObjetoValor
             bool whatsapp
         ) 
         {
-            Numero = numero;
+            Numero = numero.ApenasNumeros();
             TipoTelefone = tipoTelefone;
             Whatsapp = whatsapp;
         }

@@ -4,7 +4,7 @@ using FabricaDeIdeias.Dominio.ObjetoValor;
 using System;
 using Xunit;
 
-namespace FabricaDeIdeias.DominioTestes.EntidadesTestes
+namespace FabricaDeIdeias.DominioTestes.EntidadesTestes.UsuarioTestes
 {
     [Trait("Entidade", "Usuario")]
     public class UsuarioTeste

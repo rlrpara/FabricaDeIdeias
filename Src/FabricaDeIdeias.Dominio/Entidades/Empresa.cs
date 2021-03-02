@@ -1,4 +1,5 @@
-﻿using FabricaDeIdeias.Dominio.ObjetoValor;
+﻿using FabricaDeIdeias.Dominio.ExtensionMethods;
+using FabricaDeIdeias.Dominio.ObjetoValor;
 
 namespace FabricaDeIdeias.Dominio.Entidades
 {
@@ -11,15 +12,19 @@ namespace FabricaDeIdeias.Dominio.Entidades
             int? id,
             string razaoSocial,
             string codigoIbge,
-            string cNPJ,
+            string cnpj,
+            int? ie,
+            int? im,
             string site,
             string imagem
         )
         {
             Id = id;
-            RazaoSocial = razaoSocial;
+            RazaoSocial = razaoSocial.RemoverAcentos();
             CodigoIbge = codigoIbge;
-            CNPJ = cNPJ;
+            CNPJ = cnpj.ApenasNumeros();
+            IE = ie;
+            IM = im;
             Site = site;
             Imagem = imagem;
 

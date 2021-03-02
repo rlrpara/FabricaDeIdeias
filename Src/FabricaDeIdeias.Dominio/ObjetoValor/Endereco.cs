@@ -1,4 +1,6 @@
-﻿namespace FabricaDeIdeias.Dominio.ObjetoValor
+﻿using FabricaDeIdeias.Dominio.ExtensionMethods;
+
+namespace FabricaDeIdeias.Dominio.ObjetoValor
 {
     public class Endereco
     {
@@ -8,15 +10,15 @@
             string complemento,
             string bairro,
             string municipio,
-            string uF
+            string uf
         )
         {
-            CEP = cep;
-            Logradouro = logradouro;
-            Complemento = complemento;
-            Bairro = bairro;
-            Municipio = municipio;
-            UF = uF;
+            CEP = cep.ApenasNumeros();
+            Logradouro = logradouro.RemoverAcentos();
+            Complemento = complemento.RemoverAcentos();
+            Bairro = bairro.RemoverAcentos();
+            Municipio = municipio.RemoverAcentos();
+            UF = uf.RemoverAcentos();
 
         }
         public string CEP { get; private set; }
