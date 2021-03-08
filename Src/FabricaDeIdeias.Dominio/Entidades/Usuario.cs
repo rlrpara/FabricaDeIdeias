@@ -1,9 +1,9 @@
 ﻿using FabricaDeIdeias.Dominio.ObjetoValor;
-using System;
+using FluentValidator;
 
 namespace FabricaDeIdeias.Dominio.Entidades
 {
-    public class Usuario
+    public class Usuario : Notifiable
     {
         private Email _email;
 
@@ -15,7 +15,7 @@ namespace FabricaDeIdeias.Dominio.Entidades
         )
         {
             if (string.IsNullOrWhiteSpace(senha))
-                throw new ArgumentException("Senha é obrigatória");
+                AddNotification("Senha", "Senha obrigatória");
 
             Id = id;
             Nome = nome;

@@ -1,8 +1,9 @@
 ﻿using FabricaDeIdeias.Dominio.ExtensionMethods;
+using FluentValidator;
 
 namespace FabricaDeIdeias.Dominio.ObjetoValor
 {
-    public class Endereco
+    public class Endereco : Notifiable
     {
         public Endereco(
             string cep,

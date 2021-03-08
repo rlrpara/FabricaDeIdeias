@@ -1,14 +1,14 @@
-﻿using System;
+﻿using FluentValidator;
 
 namespace FabricaDeIdeias.Dominio.ObjetoValor
 {
-    public class Email
+    public class Email : Notifiable
     {
         private string _endereco;
         public Email(string endereco) 
         {
             if (!string.IsNullOrWhiteSpace(endereco) && !RegexUtilities.IsValidEmail(endereco))
-                throw new Exception("Email inválido");
+                AddNotification("Email", "Email inválido");
 
             _endereco = endereco;
                

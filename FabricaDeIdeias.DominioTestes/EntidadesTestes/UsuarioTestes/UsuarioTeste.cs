@@ -1,7 +1,6 @@
 ﻿using FabricaDeIdeias.Dominio;
 using FabricaDeIdeias.Dominio.Entidades;
 using FabricaDeIdeias.Dominio.ObjetoValor;
-using System;
 using Xunit;
 
 namespace FabricaDeIdeias.DominioTestes.EntidadesTestes.UsuarioTestes
@@ -14,7 +13,7 @@ namespace FabricaDeIdeias.DominioTestes.EntidadesTestes.UsuarioTestes
         {
             var usuario = new Usuario(null, "Rodrigo Ribeiro", "12345", null);
 
-            Assert.True(usuario != null);
+            Assert.True(usuario.Valid);
         }
 
         [Fact(DisplayName = "Deve validar instancia de email preenchida")]
@@ -30,7 +29,7 @@ namespace FabricaDeIdeias.DominioTestes.EntidadesTestes.UsuarioTestes
         {
             var email = new Email(null);
 
-            Assert.True(email != null);
+            Assert.True(email.Valid);
         }
 
         [Fact(DisplayName = "Deve gerar nova senha encriptografada")]
@@ -39,12 +38,15 @@ namespace FabricaDeIdeias.DominioTestes.EntidadesTestes.UsuarioTestes
             var usuario = new Usuario(null, "Rodrigo Ribeiro", "12345", null);
 
             Assert.True(Criptografia.Compara("12345", usuario.Senha));
+            Assert.True(usuario.Valid);
         }
 
         [Fact(DisplayName = "Deve retornar uma excessão quando não informado o email")]
         public void DeveRetornarExcessaoQuandoNaoInformadoEmail()
         {
-            Assert.Throws<ArgumentException>(() => new Usuario(null, "Rodrigo Ribeiro", "", null));
+            var usuario = new Usuario(null, "Rodrigo Ribeiro", "", null);
+
+            Assert.False(usuario.Valid);
         }
 
         [Fact(DisplayName = "Deve retornar a classe completa")]
@@ -57,6 +59,7 @@ namespace FabricaDeIdeias.DominioTestes.EntidadesTestes.UsuarioTestes
             Assert.Equal("Rodrigo Ribeiro", usuario.Nome);
             Assert.True(Criptografia.Compara("12345", usuario.Senha));
             Assert.Equal("rlr.para@gmail.com", usuario.Email.Endereco);
+            Assert.True(usuario.Valid);
         }
     }
 }
